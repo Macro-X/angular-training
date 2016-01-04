@@ -153,7 +153,7 @@ Tags: angular, exercise
     width: 50px;
     text-align: left;
     font-size: 1em;
-    padding: 5px;
+    padding: 5px 0 5px 5px;
 }
 
 #myCalculator form select {
