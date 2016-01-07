@@ -8,25 +8,40 @@
     <link rel="stylesheet" type="text/css" href="css/quiz.css">
 </head>
 
-<body>
-    <div id="myQuiz">
+<body ng-app="myQuiz">
+    <div id="myQuiz" ng-controller="QuizCtrl">
         <h1>Test your knowledge: <span>Saturn</span></h1>
-        <div class="progress"></div>
-        <div class="intro">
+        <div class="progress">
+            <div class="{{ ($index === activeQuestion) ? 'on' : 'off' }}" ng-repeat="myQuestion in myQuestions"></div>
+        </div>
+        <div class="intro {{ (activeQuestion > -1) ? 'inactive' : 'active' }}">
             <h2>Welcome</h2>
             <p>Click begin to start the test</p>
-            <p class="btn">Begin</p>
+            <p class="btn" ng-click="activeQuestion = 0">Begin</p>
         </div>
-        <div class="question">
-            <p class="txt">This is a question</p>
-            <p class="ans">Answer 1</p>
-            <p class="ans">Answer 2</p>
-            <p class="ans">Answer 3</p>
-            <p class="ans">Answer 4</p>
-            <div class="feedback"></div>
+        <div class="question answered" ng-repeat="myQuestion in myQuestions">
+            <p class="txt">{{myQuestion.question}}</p>
+            <p class="ans" ng-repeat="(key, value) in dataset"></p>
+            <div class="feedback">
+                <p>You are <strong>correct</strong></p>
+                <p>Oops! That is not correct</p>
+                <p>Aditional feedback</p>
+                <div class="btn">Continue</div>
+            </div>
         </div>
-        <div class="results"></div>
+        <div class="results">
+            <h3>Results</h3>
+            <p>You scored X% by correctly answering X if the total X questions.</p>
+            <p>Use links below to challenge your friends.</p>
+            <div class="share">
+                <a href="" class="btn facebook">Facebook</a>
+                <a href="" class="btn twitter">Twitter</a>
+                <a href="" class="btn email">Email</a>
+            </div>
+        </div>
     </div>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/quiz.js"></script>
 </body>
 
 </html>
