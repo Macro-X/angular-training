@@ -64,7 +64,7 @@
             var twitterLink = '<a class="btn twitter" target="_blank" href="http://twitter.com/share?text=Beat me at&amp;hashtags=SaturnQuiz&amp;url='+ url +'" >Tweet your score</a>';
             var facebookLink = '<a class="btn facebook" href="#" >Share on Facebook</a>';
 
-            var newMarkup = emailLink + twitterLink + facebookLink;
+            var newMarkup = emailLink + twitterLink;
 
             return $sce.trustAsHtml(newMarkup);
         }
